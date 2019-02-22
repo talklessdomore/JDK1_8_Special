@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
 
+import static java.util.stream.Collectors.toList;
+
 /**
  * 描述:
  * 流的初尝试
@@ -78,10 +80,11 @@ public class StreamRefer {
         names.add("lisi");
         names.add("wangwu");
         Stream<String> nameStream = names.stream();
-       /**Stream limit(long maxSize) 获得流中前 maxSize 个元素，将元素添加到另一个流中返回
-        如果 maxSize 大于等于当前流的元素个数，则所有元素都会获取到
-        如果 maxSize 等于 0，则会获得一个空流。
-        可以流式编程
+       /*
+        * Stream limit(long maxSize) 获得流中前 maxSize 个元素，将元素添加到另一个流中返回
+        *如果 maxSize 大于等于当前流的元素个数，则所有元素都会获取到
+        *如果 maxSize 等于 0，则会获得一个空流。
+        *可以流式编程
         */
        //1.获取前面几个流，当为0是为空流但不会为null
         Stream<String> limitStream = nameStream.limit(0);
@@ -139,6 +142,17 @@ public class StreamRefer {
         Stream<String> nameStream = names.stream();
         //sorted(Comparator<? super T> comparator)排序
         nameStream.map(name -> name.length()).sorted().forEach(System.out::println);
+    }
+
+    @Test
+    public void testStreamMethodCollect(){
+        names.add("zhangsan");
+        names.add("lisi");
+        names.add("wangwu");
+        //collect(toList())将流转成集合
+        List<Integer> convertCoinTypes = names.stream().map(coinType -> coinType.length()).collect(toList());
+        convertCoinTypes.forEach(System.out::println);
+
     }
 
 
