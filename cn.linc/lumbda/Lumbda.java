@@ -88,6 +88,7 @@ public class Lumbda {
     //4在 Lambda 表达式当中不允许声明一个与局部变量同名的参数或者局部变量
     @Test
     public void testScope3(){
+        int a = 1;//编译异常
         MathOperation scopeMathOperatin = (a, b) -> a+b;
         int scope = scopeMathOperatin.operate(1,2);
         System.out.println("变量作用域测试"+scope);

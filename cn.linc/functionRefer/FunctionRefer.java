@@ -13,12 +13,14 @@ import java.util.function.Supplier;
  * @create 2019-02-22 10:13
  */
 public class FunctionRefer {
-
+    /*
+     *内部接口定义
+     */
     interface FunctionOperator{
         int sum(int a ,int b);
     }
 
-    /**
+    /*
      * 静态方法的引用或任意对象方法引用：Class::method
      */
     @Test
@@ -44,17 +46,11 @@ public class FunctionRefer {
      */
     @Test
     public void objectRefer(){
+        //supplier是jdk1.8的函数，这个函数定义是有一个返回值，无入参，与创建实例对象的构造函数方法定义相同可以接收
         Supplier<FunctionOperator> fun = FunctionReferImpl::new;
         FunctionOperator functionOperator = fun.get();
         FunctionOperator functionOperator1 = functionOperator::sum;
         Consumer<String> consumer = System.out::println;
         consumer.accept("方法引用方式："+functionOperator1.sum(1,2));
     }
-
-
-
-
-
-
-
 }

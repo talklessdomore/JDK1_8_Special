@@ -123,7 +123,6 @@ public class StreamRefer {
         Stream.concat(nameStream,valueStream).forEach(System.out::println);
     }
 
-
     @Test
     public void testStreamMethodConcat(){
         names.add("zhangsan");
@@ -152,22 +151,6 @@ public class StreamRefer {
         //collect(toList())将流转成集合
         List<Integer> convertCoinTypes = names.stream().map(coinType -> coinType.length()).collect(toList());
         convertCoinTypes.forEach(System.out::println);
-
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 }
